@@ -112,6 +112,7 @@ section.page.on{display:block;animation:fade .35s both}
 .stat .n{font-family:"Cormorant Garamond",Georgia,serif;font-size:40px;color:var(--gold-lt);
   line-height:1;font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1;direction:rtl;font-weight:300}
 .stat .n.on{color:var(--teal)}
+.stat .n.money{font-family:Heebo,sans-serif;font-size:29px;font-weight:300;letter-spacing:-.01em}
 .stat .l{font-size:12.5px;color:var(--mut);margin-top:8px;letter-spacing:.02em}
 
 /* ══ headings ══ */
@@ -513,7 +514,7 @@ function render(){
   ];
   document.getElementById('stats').innerHTML=st.map(x=>
     `<button class="stat ${x[2]?'act':''}" ${x[2]?`onclick="goStat('${x[2]}')"`:'disabled style="opacity:.9"'}>
-      <div class="n ${x[3]?'on':''}">${esc(x[0])}</div><div class="l">${x[1]}</div></button>`).join('');
+      <div class="n ${x[3]?'on':''} ${String(x[0]).indexOf('₪')>=0?'money':''}">${esc(x[0])}</div><div class="l">${x[1]}</div></button>`).join('');
 
   const bits=[cl.length+' חברות מועדון'];
   if(bdays)bits.push(bdays===1?'יום הולדת אחד החודש':bdays+' ימי הולדת החודש');
